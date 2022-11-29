@@ -12,5 +12,4 @@ class Genre
     @items << item
     item.genre = self
   end
-  
 end
