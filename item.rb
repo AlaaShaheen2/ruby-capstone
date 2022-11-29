@@ -1,3 +1,5 @@
+require 'date'
+
 class Item
     #attribute readers
     attr_reader :id, :publish_date, :archived
@@ -9,6 +11,26 @@ class Item
         @archived = archived
     end
 
+    #public methds
+    def genre=(genre)
+        @genre = genre
+        genre.items << self unless genre.items.include?(self)
+    end
+
+    def author=(author)
+        @author = author
+        author.items << self unless author.items.include?(self)
+      end
+
+    def label=(label)
+        @label = label
+        label.items << self unless label.items.include?(self)
+    end
+     
+    def move_to_archive
+        @archived = true if can_be_archived?
+    end
+    
     #private methos
     private
 
