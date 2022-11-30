@@ -1,5 +1,6 @@
 require_relative './genre'
 require_relative './author'
+require_relative './music_album'
 require_relative './display'
 
 class App
@@ -10,6 +11,7 @@ class App
     @sources = []
     @genres = []
     @authors = []
+    @music_albums = []
   end
 
   def quit_app
@@ -32,5 +34,9 @@ class App
 
   def list_all_sources
     Display.list_all_sources(@sources)
+  end
+
+  def list_all_music_albums
+    Display.list_all_music_albums(@music_albums)
   end
 end
