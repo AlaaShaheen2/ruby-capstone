@@ -20,32 +20,25 @@ def menu
   puts @options
 end
 
+CHOICES = {
+  1 => 'list_all_books',
+  2 => 'list_all_music_albums',
+  3 => 'list_all_movies',
+  4 => 'list_all_games',
+  5 => 'list_all_genres',
+  6 => 'list_all_labels',
+  7 => 'list_all_authors',
+  8 => 'list_all_sources',
+  9 => 'add_book',
+  10 => 'add_music_album',
+  11 => 'add_movie',
+  12 => 'add_game'
+}.freeze
+
 def option_case(choice, app)
   case choice
-  when 1
-    app.list_all_books
-  when 2
-    app.list_all_music_albums
-  when 3
-    app.list_all_movies
-  when 4
-    app.list_all_games
-  when 5
-    app.list_all_genres
-  when 6
-    app.list_all_labels
-  when 7
-    app.list_all_authors
-  when 8
-    app.list_all_sources
-  when 9
-    app.add_book
-  when 10
-    app.add_music_album
-  when 11
-    app.add_movie
-  when 12
-    app.add_game
+  when 1..12
+    app.send(CHOICES[choice])
   else
     puts 'Incorrect choice, choose a number between 1..12'
   end
