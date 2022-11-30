@@ -5,3 +5,9 @@ CREATE TABLE Book(
   publisher VARCHAR(150),
   cover_state VARCHAR(200),
 );
+
+CREATE TABLE Source (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR,
+);
+
