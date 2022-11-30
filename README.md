@@ -102,11 +102,11 @@ rspec spec
 - Twitter: [@belmeetmule](https://twitter.com/belmeetmule)
 - LinkedIn: [belmeetmule](https://linkedin.com/in/belmeetmule)
 
-**👨‍💻 Waris Haleem**
+### 👩‍💻 Alaa Shaheen
 
-- GitHub: [@iAmWaris97](https://github.com/iAmWaris97)
-- Twitter: [@iAmWaris97](https://twitter.com/iAmWaris97)
-- LinkedIn: [Waris Haleem](https://www.linkedin.com/in/waris-haleem/)
+    - GitHub: [@AlaaShaheen2](https://github.com/AlaaShaheen2)
+    - Twitter: [@Alaa Shaheen](https://twitter.com/AlaaShaheen93)
+    - LinkedIn: [@Alaa Shaheen](https://www.linkedin.com/in/alaa-shaheen-879140240/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
