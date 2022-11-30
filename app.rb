@@ -25,4 +25,12 @@ class App
     def list_all_genres
         Display.list_all_genres(@genres)
     end
+
+    def list_all_labels
+        Display.list_all_labels(@labels)
+    end
+    
+    def list_all_sources
+        Display.list_all_sources(@sources)
+    end
 end
