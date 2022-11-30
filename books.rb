@@ -8,7 +8,9 @@ class Book < Item
     @publisher = publisher
     @cover_state = cover_state
   end
-private
+
+  private
+
   def can_be_archived?
     true if super || cover_state == 'bad'
     false
