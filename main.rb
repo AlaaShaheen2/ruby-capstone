@@ -47,7 +47,7 @@ def option_case(choice, app)
     when 12
         app.add_game
     else
-      puts 'Incorrect choice, choose a number between 1..11'
+      puts 'Incorrect choice, choose a number between 1..12'
     end
   end
 
