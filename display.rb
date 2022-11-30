@@ -1,4 +1,5 @@
 class Display
+
   def self.list_all_authors(authors)
     if authors.empty?
       puts 'The Items list is empty, add some items...'
@@ -47,7 +48,7 @@ class Display
     if music_albums.empty?
       puts 'The music album list is empty, add some albums...'
     else
-      puts "Music Albums list, count(#{music_albums.count}) \u{1F3B9} :\n\n"
+      puts "Music Albums list, count(#{music_albums.count}) :\n\n"
       music_albums.each_with_index do |music, index|
         puts "#{index + 1}) Title: '#{music.label.title}', Genre: #{music.genre.name}"
       end
