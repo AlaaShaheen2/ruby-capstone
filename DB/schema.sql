@@ -23,3 +23,24 @@ CREATE TABLE Labels(
   color VARCHAR(100),
   FOREIGN KEY(item_id) REFERENCES items(id)
 );
+
+
+CREATE TABLE Game (
+    id INTEGER GENERATED ALWAYS AS INDENTITY PRIMARY KEY,
+    last_played_date DATE NOT NULL,
+    multiplayer BOOLEAN NOT NULL,
+    FOREIGN KEY(item_id) REFERENCES items(id)
+);
+
+CREATE TABLE MusicAlbum(
+  id INTEGER GENERATED ALWAYS AS INDENTITY PRIMARY KEY,
+  on_spotify BOOLEAN,
+  publish_date DATE
+);
+
+
+CREATE TABLE Author (
+    id INTEGER GENERATED ALWAYS AS INDENTITY PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50)
+);
