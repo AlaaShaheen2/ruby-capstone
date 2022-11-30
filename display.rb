@@ -42,4 +42,15 @@ class Display
       end
     end
   end
+
+  def self.list_all_music_albums(music_albums)
+    if music_albums.empty?
+      puts 'The music album list is empty, add some albums...'
+    else
+      puts "Music Albums list, count(#{music_albums.count}) \u{1F3B9} :\n\n"
+      music_albums.each_with_index do |music, index|
+        puts "#{index + 1}) Title: '#{music.label.title}', Genre: #{music.genre.name}"
+      end
+    end
+  end
 end
