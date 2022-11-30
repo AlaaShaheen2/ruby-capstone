@@ -1,5 +1,4 @@
 class Display
-
   def self.list_all_authors(authors)
     if authors.empty?
       puts 'The Items list is empty, add some items...'
