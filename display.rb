@@ -20,6 +20,28 @@ class Display
             end
         end   
     end
-    
+
+    def self.list_all_labels(labels)
+        if labels.empty?
+          puts 'The label list is empty, add some items...'
+        else
+          puts "Labels list, count(#{labels.count}) :\n\n"
+          labels.each_with_index do |label, index|
+            puts "#{index + 1}) Title: '#{label.title}', Color: #{label.color}"
+          end
+        end
+      end
+
+      def self.list_all_sources(sources)
+        if sources.empty?
+          puts 'The sources list is empty, add some sources...'
+        else
+          puts "Sources list, count(#{sources.count}) :\n\n"
+          sources.each_with_index do |source, index|
+            puts "#{index + 1}) Name: '#{source.name}'"
+          end
+        end
+      end
+
 end
 
