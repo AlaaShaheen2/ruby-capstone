@@ -2,8 +2,8 @@ class Genre
   attr_accessor :name
   attr_reader :id, :items
 
-  def initialize(name, id: SecureRandom.hex(7))
-    @id = id
+  def initialize(name)
+    @id = Random.rand(1..200)
     @name = name
     @items = []
   end
