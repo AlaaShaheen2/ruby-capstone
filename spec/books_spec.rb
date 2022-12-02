@@ -19,7 +19,7 @@ describe Book do
   end
 
   it 'The book published at ' do
-    expect(@book.publish_date.strftime('%d-%m-%Y')).to eq ('12-04-2009')
+    expect(@book.publish_date.strftime('%d-%m-%Y')).to eq('12-04-2009')
   end
 
   it 'Book should not be archived' do
