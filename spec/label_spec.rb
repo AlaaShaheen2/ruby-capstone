@@ -1,4 +1,4 @@
-require '../Label'
+require '../label'
 
 describe Label do
   before :each do
