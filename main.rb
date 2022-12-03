@@ -1,75 +1,39 @@
 require_relative './app'
 
-def app_menu
-  puts '1 - List books'
-  puts '2 - List games'
-  puts '3 - List music albums'
-  puts '4 - List movies'
-  puts '5 - Add a book'
-  puts '6 - Add a game'
-  puts '7 - Add a music album'
-  puts '8 - Add a movie'
-  puts '9 - List abels'
-  puts '10 - List genres'
-  puts '11 - List authors'
-  puts '12 - List sources'
-  puts '13 - Exit'
-  puts '========================'
-  puts "\n"
-end
-
-# rubocop:disable Metrics/CyclomaticComplexity
-def check_selection(response)
-  get_data = InfoData.load_info_data(@books, @games, @movies, @music_albums)
-  case response
-  when '1'
-    Book.list_all_books(@books)
-  when '2'
-    Game.list_all_games(@games)
-  when '3'
-    MusicAlbum.list_music_albums(@music_albums)
-  when '4'
-    Movie.list_movies(@movies)
-    puts
-  when '5'
-    book = Book.create_book
-    @books << book
-    puts "Book '#{book.name}' by #{book.author} created successfully" if @books.include?(book)
-  when '6'
-    game = Game.create_game
-    @games << game
-    puts "Game '#{game.name}' of gender #{game.gender} created successfully" if @games.include?(game)
-  when '7'
-    album = MusicAlbum.create_album
-    @music_albums << album
-    puts "Music Album '#{album.name}' by #{album.author} created successfully" if @music_albums.include?(album)
-  when '8'
-    movie = Movie.create_movie
-    @movies << movie
-    puts "Movie '#{movie.name}' of gender #{movie.gender} created successfully" if @movies.include?(movie)
-  when '9'
-    get_data.each_with_index do |item, index|
-      p "# #{index + 1} label: #{item['label']} type: #{item['type'].capitalize}"
-    end
-    puts
-  when '10'
-    get_data.each_with_index do |item, index|
-      p "# #{index + 1} Gender: #{item['gender']}"
-    end
-    puts
-  when '11'
-    get_data.each_with_index do |item, index|
-      p "# #{index + 1} Author: #{item['author']}"
-    end
-    puts
-  when '12'
-    get_data.each_with_index do |item, index|
-      p "# #{index + 1} Source: #{item['source']}"
-    end
-    puts
+def display_options
+  options = { 1 => 'List books', 2 => 'List music albums', 3 => 'List games',
+              4 => 'List genres', 5 => 'List labels', 6 => 'List authors',
+              7 => 'Add a book', 8 => 'Add a music album',
+              9 => 'Add a game', 10 => 'Exit' }
+  options.each { |key, value| puts "#{key} - #{value}\n" }
+  choice = gets.chomp.to_i
+  if choice >= 1 && choice <= 10
+    choose_option(choice)
+  else
+    puts 'Please choose a valid option'
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity
+
+def choose_option(choice)
+  list_all_books if choice == 1
+  list_all_music_albums if choice == 2
+  list_of_games if choice == 3
+  choose_option_one(choice)
+end
+
+def choose_option_one(choice)
+  list_all_genres if choice == 4
+  list_all_labels if choice == 5
+  list_all_authors if choice == 6
+  choose_option_two(choice)
+end
+
+def choose_option_two(choice)
+  add_a_book if choice == 7
+  add_a_music_album if choice == 8
+  add_a_game if choice == 9
+  exit if choice == 10
+end
 
 def main
   app = App.new

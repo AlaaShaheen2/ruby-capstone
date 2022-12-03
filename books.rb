@@ -4,8 +4,8 @@ require 'date'
 class Book < Item
   attr_reader :publisher, :cover_state, :id, :archived
 
-  def initialize(publisher, cover_state, publish_date, archived)
-    super(publish_date, archived: archived)
+  def initialize(publisher, cover_state, publish_date)
+    super()
     @id = Random.rand(1..200)
     @publisher = publisher
     @cover_state = cover_state

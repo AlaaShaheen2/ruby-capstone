@@ -1,11 +1,12 @@
-require './item'
+require_relative './item'
+require 'date'
 
 class MusicAlbum < Item
   attr_reader :id, :on_spotify
 
   def initialize(publish_date, on_spotify)
     super()
-    @id = Random.rand(1..1000)
+    @id = Random.rand(1..200)
     @on_spotify = on_spotify
     @publish_date = Date.parse(publish_date)
   end

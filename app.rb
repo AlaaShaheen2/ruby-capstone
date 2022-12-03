@@ -1,118 +1,64 @@
-require_relative './author'
-require_relative './books'
-require_relative './game'
-require_relative './label'
-require_relative './music_album'
-require_relative './display'
-require_relative './files/store_data'
-require_relative './files/read_data'
+require_relative './module/add_books'
+require './module/game_module'
+require_relative './module/author_module'
+require_relative './module/music_module'
 
 class App
-  attr_reader :sources, :labels, :genres, :authors, :music_albums
+  include GameModule
+  include DataStorage
+  include BookModule
+  include MusicModule
+  include ReadMusic
+  include WriteMusic
+  include ReadGenre
+  include WriteGenre
 
   def initialize
-    @labels = ReadData.read_labels
-    @sources = ReadData.read_sources
-    @genres = ReadData.read_genres
-    @authors = ReadData.read_authors
-    @music_albums = ReadData.read_music_albums
+    @books = []
+    @labels = []
+    @music_album = read_list
+    @games = []
+    @genre = read_genre
+    @authors = []
   end
 
-  def add_label(item_type)
-    print "Title of the #{item_type}: "
-    title = gets.chomp
-    print "Color of the #{item_type}: "
-    color = gets.chomp
-    Label.new(title, color)
+  def run
+    display_options
   end
 
-  def add_genre(item_type)
-    print "#{item_type} genre: "
-    genre_name = gets.chomp
-    Genre.new(genre_name)
-  end
-
-  def add_source(item_type)
-    print "#{item_type} source (e.g. 'From a friend', 'Online shop'): "
-    source_name = gets.chomp
-    Source.new(source_name)
-  end
-
-  def add_author(item_type)
-    puts "#{item_type} author"
-    print 'First name: '
-    first_name = gets.chomp
-    print 'Last name: '
-    last_name = gets.chomp
-    Author.new(first_name, last_name)
-  end
-
-  def on_spotify?
-    print 'Is the Music Album on Spotify? [Y/N]: '
-    is_spotify = gets.chomp.downcase
-    case is_spotify
-    when 'y'
-      true
-    when 'n'
-      false
-    else
-      puts 'Invalid Selection. Please enter \'y\', \'Y\' or \'n\', \'N\'!'
-      on_spotify?
-    end
-  end
-
-  def add_music_album
-    on_spotify = on_spotify?
-    print 'Date published ? (yyyy/mm/dd) (e.g 2001/01/12): '
-    published_date = gets.chomp
-    album = MusicAlbum.new(on_spotify, published_date)
-    label = add_label('Music Album')
-    genre = add_genre('Music Album')
-    source = add_source('Music Album')
-    singer = add_author('Music Album')
-    puts "\n Music Album created successfully \n \n"
-    label.add_item(album)
-    genre.add_item(album)
-    singer.add_item(album)
-    source.add_item(album)
-
-    @music_albums << album
-    @labels << label
-    @genres << genre
-    @authors << singer
-    @sources << source
-
-    puts "\n '#{label.title}' by #{singer.first_name} #{singer.last_name} was added successfully!"
-  end
-
-  def quit_app
-    # it is here that we r going to persist data to files
-    StoreData.store_source(@sources)
-    StoreData.store_labels(@labels)
-    StoreData.store_genres(@genres)
-    StoreData.store_authors(@authors)
-    StoreData.store_music_albums(@music_albums)
-    puts 'Thank you for using this app! Now exiting...'
-    exit
-  end
-
-  def list_all_authors
-    Display.list_all_authors(@authors)
-  end
-
-  def list_all_genres
-    Display.list_all_genres(@genres)
-  end
-
-  def list_all_labels
-    Display.list_all_labels(@labels)
-  end
-
-  def list_all_sources
-    Display.list_all_sources(@sources)
+  def list_all_books
+    list_books
   end
 
   def list_all_music_albums
-    Display.list_all_music_albums(@music_albums)
+    music_list
+  end
+
+  def list_of_games
+    list_game
+  end
+
+  def list_all_genres
+    show_genres
+  end
+
+  def list_all_labels
+    list_label
+  end
+
+  def list_all_authors
+    list_authors
+  end
+
+  def add_a_book
+    add_books
+  end
+
+  def add_a_music_album
+    add_a_music
+  end
+
+  def add_a_game
+    add_game
   end
 end
