@@ -1,7 +1,7 @@
 require_relative './item'
 
 class Author < Item
-  attr_accessor :items, :last_name
+  attr_accessor :items, :first_name
 
   def initialize(first_name, last_name)
     super()
@@ -11,9 +11,8 @@ class Author < Item
     @items = []
   end
 
-  # add item method
-  def add_item(item)
-    @items << item
-    item.author = self
+  def add_item(game)
+    @items << game
+    game.author = self
   end
 end
