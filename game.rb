@@ -11,7 +11,7 @@ class Game < Item
   end
 
   def can_be_archived?
-    test = Time.now.year - @last_play.year > 2
-    archived && test
+    check = Time.now.year - @last_play.year > 2
+    archived && check
   end
 end

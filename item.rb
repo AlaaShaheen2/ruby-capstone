@@ -1,11 +1,9 @@
-require 'date'
-
 class Item
   # attribute readers
   attr_reader :id, :publish_date, :archived
 
   # constructor
-  def initialize(publish_date, archived: false)
+  def initialize(publish_date: Time.now, archived: false)
     @id = Random.rand(1..200)
     @publish_date = publish_date
     @archived = archived

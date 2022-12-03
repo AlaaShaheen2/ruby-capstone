@@ -1,9 +1,10 @@
-class Author
-  # getters and setters
-  attr_reader :id, :items
-  attr_accessor :first_name, :last_name
+require_relative './item'
+
+class Author < Item
+  attr_accessor :items, :last_name
 
   def initialize(first_name, last_name)
+    super()
     @id = Random.rand(1..200)
     @first_name = first_name
     @last_name = last_name
