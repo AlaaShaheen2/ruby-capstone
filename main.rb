@@ -3,7 +3,7 @@ require_relative './app'
 def display_options
   options = { 1 => 'List books', 2 => 'List music albums', 3 => 'List games',
               4 => 'List genres', 5 => 'List labels', 6 => 'List authors',
-                7 => 'Add a book', 8 => 'Add a music album',
+              7 => 'Add a book', 8 => 'Add a music album',
               9 => 'Add a game', 10 => 'Exit' }
   options.each { |key, value| puts "#{key} - #{value}\n" }
   choice = gets.chomp.to_i
