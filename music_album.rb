@@ -1,16 +1,16 @@
 require './item'
 
 class MusicAlbum < Item
-  attr_accessor :on_spotify, :label, :genre, :author, :source
+  attr_reader :id, :on_spotify
 
-  def initialize(on_spotify, publish_date)
-    super(publish_date)
+  def initialize(publish_date, on_spotify)
+    super()
+    @id = Random.rand(1..1000)
     @on_spotify = on_spotify
+    @publish_date = Date.parse(publish_date)
   end
 
-  private
-
   def can_be_archived?
-    super and @on_spotify
+    true if super || on_spotify == true
   end
 end
