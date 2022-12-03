@@ -4,6 +4,7 @@ require_relative './source'
 require_relative './label'
 require_relative './music_album'
 require_relative './display'
+require_relative './file/store_data'
 
 class App
   attr_reader :sources, :labels, :genres, :authors, :music_albums
@@ -33,7 +34,7 @@ class App
   def add_source(item_type)
     print "#{item_type} source (e.g. 'From a friend', 'Online shop'): "
     source_name = gets.chomp
-    Genre.new(source_name)
+    Source.new(source_name)
   end
 
   def add_author(item_type)
@@ -85,6 +86,11 @@ class App
 
   def quit_app
     # it is here that we r going to persist data to files
+    StoreData.store_source(@sources)
+    StoreData.store_labels(@labels)
+    StoreData.store_genres(@genres)
+    StoreData.store_authors(@authors)
+    StoreData.store_music_albums(@music_albums)
     puts 'Thank you for using this app! Now exiting...'
     exit
   end
