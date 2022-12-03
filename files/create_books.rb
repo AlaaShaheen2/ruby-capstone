@@ -1,9 +1,9 @@
-require '../books'
-require '..label'
+require_relative '../books'
+require_relative '../label'
 require_relative './storage'
 
 module BookModule
-  include DataStorage
+  include Storage
 
   def add_books
     load_storage('books')

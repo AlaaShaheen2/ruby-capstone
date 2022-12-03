@@ -98,7 +98,7 @@ module ReadMusic
       JSON.parse(list_of_music.read)
     else
       puts 'Creating a new Music List file'
-      File.write('./JSON/music_album.json', [])
+      File.write('./DATA/music_album.json', [])
     end
   end
 end
@@ -110,7 +110,7 @@ module ReadGenre
       JSON.parse(list_of_genre.read)
     else
       puts 'Creating a new Genre List file'
-      File.write('./JSON/genre.json', [])
+      File.write('./DATA/genre.json', [])
     end
   end
 end
