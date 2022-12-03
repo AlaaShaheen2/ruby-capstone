@@ -17,6 +17,11 @@ class Item
     genre.items << self unless genre.items.include?(self)
   end
 
+  def source=(source)
+    @source = source
+    source.items << self unless source.items.include?(self)
+  end
+
   def author=(author)
     @author = author
     author.items << self unless author.items.include?(self)
