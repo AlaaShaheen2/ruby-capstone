@@ -4,17 +4,18 @@ require_relative './source'
 require_relative './label'
 require_relative './music_album'
 require_relative './display'
-require_relative './file/store_data'
+require_relative './files/store_data'
+require_relative './files/read_data'
 
 class App
   attr_reader :sources, :labels, :genres, :authors, :music_albums
 
   def initialize
-    @labels = []
-    @sources = []
-    @genres = []
-    @authors = []
-    @music_albums = []
+    @labels = ReadData.read_labels
+    @sources = ReadData.read_sources
+    @genres = ReadData.read_genres
+    @authors = ReadData.read_authors
+    @music_albums = ReadData.read_music_albums
   end
 
   def add_label(item_type)
