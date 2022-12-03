@@ -12,17 +12,17 @@ class Item
   # public methds
   def genre=(genre)
     @genre = genre
-    genre.items << self unless genre.items.include?(self)
+    genre.items.push(self) unless genre.items.include?(self)
   end
 
   def author=(author)
     @author = author
-    author.items << self unless author.items.include?(self)
+    author.items.push(self) unless author.items.include?(self)
   end
 
   def label=(label)
     @label = label
-    label.items << self unless label.items.include?(self)
+    label.items.push(self) unless label.items.include?(self)
   end
 
   def move_to_archive
@@ -33,6 +33,7 @@ class Item
   private
 
   def can_be_archived?
-    (Date.today.year - Date.parse(@publish_date).year) > 10
+    current = Time.now.year - publish_date.year.to_i
+    true if current > 10
   end
 end
