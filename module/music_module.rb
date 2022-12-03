@@ -5,10 +5,10 @@ require_relative '../genre'
 module MusicModule
   def music_list
     if @music_album.empty?
-      puts "<<< Music list is empty >>>\n\n"
+      puts "<<< Music list empty >>>\n\n"
       run
     else
-      puts 'List all music albums'
+      puts 'list all music albums'
       @music_album.each do |element|
         puts "Id: #{element['id']} Publish date: #{element['publish_date']} On spotify: #{element['on_spotify']}"
       end
@@ -31,7 +31,7 @@ module MusicModule
     puts 'Publish date: [DD-MM-YYYY]'
     publish_date = gets.chomp
 
-    puts 'On spotify [Y/N]:'
+    puts 'on spotify [Y/N]:'
     on_spotify = gets.chomp.capitalize
 
     @new_album = MusicAlbum.new(publish_date, on_spotify)
@@ -98,7 +98,7 @@ module ReadMusic
       JSON.parse(list_of_music.read)
     else
       puts 'Creating a new Music List file'
-      File.write('./DATA/music_album.json', [])
+      File.write('./JSON/music_album.json', [])
     end
   end
 end
@@ -110,7 +110,7 @@ module ReadGenre
       JSON.parse(list_of_genre.read)
     else
       puts 'Creating a new Genre List file'
-      File.write('./DATA/genre.json', [])
+      File.write('./JSON/genre.json', [])
     end
   end
 end

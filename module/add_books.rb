@@ -1,9 +1,8 @@
 require_relative '../books'
 require_relative '../label'
-require_relative './storage'
-
+require_relative './data_storage'
 module BookModule
-  include Storage
+  include DataStorage
 
   def add_books
     load_storage('books')
@@ -23,13 +22,13 @@ module BookModule
     label_data = { title: label.title, color: label.color, id: Random.rand(1..100) }
     @labels.push(label)
     update_storage('labels', label_data)
-    puts 'Book and its label created!'
+    puts 'BOOK AND LABEL CREATED SUCCESSFULLY'
     puts "\n"
   end
 
   def list_books
     books = load_storage('books')
-    puts 'No book found!: ' if books.length.zero?
+    puts 'No Books: ' if books.length.zero?
     books.each_with_index do |book, index|
       puts "#{index + 1}. Publish_date: #{book['publish_date']}, cover_state: #{book['cover_state']}",
            "Publisher: #{book['publisher']}, Archived: #{book['archived']}, ID: #{book['id']}"
@@ -39,7 +38,7 @@ module BookModule
 
   def list_label
     labels = load_storage('labels')
-    puts 'No label found: ' if labels.length.zero?
+    puts 'No label: ' if labels.length.zero?
     labels.each_with_index do |label, index|
       puts "#{index + 1}. Title: #{label['title']}, Color: #{label['color']}, ID: #{label['id']}"
     end
@@ -47,7 +46,7 @@ module BookModule
   end
 
   def ask_cover_state
-    print 'Enter cover state: '
+    print 'Type cover state: '
     gets.chomp
   end
 
@@ -57,24 +56,24 @@ module BookModule
   end
 
   def ask_publish_date
-    puts 'Enter publish date'
+    puts 'Type publish date'
     print 'Publish date [dd-mm-yyyy]: '
     gets.chomp
   end
 
   def ask_archived
-    puts 'Is it already archived'
+    puts 'Select if is already archived'
     print 'Is archived? [Yy/Nn]: '
     gets.chomp
   end
 
   def ask_title
-    print 'Enter title: '
+    print 'Type title: '
     gets.chomp
   end
 
   def ask_color
-    print 'Enter color: '
+    print 'Type color: '
     gets.chomp
   end
 end

@@ -1,16 +1,16 @@
-require_relative './storage'
+require_relative './data_storage'
 require_relative '../game'
-require_relative './create_author'
+require_relative './author_module'
 
 module GameModule
-  include Storage
+  include DataStorage
   include GamesAuthor
 
   def add_game
     load_storage('games')
     puts 'Is this game multi player ? (Y/N)'
     multiplayer = gets.chomp
-    puts 'When was this game last played?(dd-mm-yyyy):'
+    puts 'Enter last played date for this game(dd-mm-yyyy):'
     last_played_date = gets.chomp
     puts ['Select 1 to create game with an existing author or', 'Select 2 to create with a new author']
     author_choice = gets.chomp.to_i

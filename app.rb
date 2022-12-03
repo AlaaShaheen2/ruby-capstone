@@ -1,11 +1,11 @@
-require_relative './files/create_books'
-require './files/game_mod'
-require_relative './files/create_author'
-require_relative './files/music_mod'
+require_relative './module/add_books'
+require './module/game_module'
+require_relative './module/author_module'
+require_relative './module/music_module'
 
 class App
   include GameModule
-  include Storage
+  include DataStorage
   include BookModule
   include MusicModule
   include ReadMusic
@@ -16,7 +16,6 @@ class App
   def initialize
     @books = []
     @labels = []
-    @source = []
     @music_album = read_list
     @games = []
     @genre = read_genre
@@ -24,7 +23,7 @@ class App
   end
 
   def run
-    app_menu
+    display_options
   end
 
   def list_all_books
@@ -49,10 +48,6 @@ class App
 
   def list_all_authors
     list_authors
-  end
-
-  def list_all_sources
-    puts 'List_all_sources'
   end
 
   def add_a_book

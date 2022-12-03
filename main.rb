@@ -1,6 +1,6 @@
 require_relative './app'
 
-def app_menu
+def display_options
   options = { 1 => 'List books', 2 => 'List music albums', 3 => 'List games',
               4 => 'List genres', 5 => 'List labels', 6 => 'List authors',
                 7 => 'Add a book', 8 => 'Add a music album',
@@ -8,7 +8,7 @@ def app_menu
   options.each { |key, value| puts "#{key} - #{value}\n" }
   choice = gets.chomp.to_i
   if choice >= 1 && choice <= 10
-    app_menu(choice)
+    choose_option(choice)
   else
     puts 'Please choose a valid option'
   end
