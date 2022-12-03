@@ -7,7 +7,7 @@ module GameModule
   include GamesAuthor
 
   def add_game
-    load_storage('games')
+    load_storage('game')
     puts 'Is this game multi player ? (Y/N)'
     multiplayer = gets.chomp
     puts 'Enter last played date for this game(dd-mm-yyyy):'
