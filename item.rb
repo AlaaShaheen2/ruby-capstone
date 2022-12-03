@@ -3,6 +3,7 @@ require 'date'
 class Item
   # attribute readers
   attr_reader :id, :publish_date, :archived
+  
 
   # constructor
   def initialize(publish_date, archived: false)
@@ -15,6 +16,11 @@ class Item
   def genre=(genre)
     @genre = genre
     genre.items << self unless genre.items.include?(self)
+  end
+
+  def source=(source)
+    @source = source
+    source.items << self unless source.items.include?(self)
   end
 
   def author=(author)
